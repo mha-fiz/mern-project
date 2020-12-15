@@ -1,0 +1,49 @@
+.detail-container {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 10px 10px;
+  grid-template-areas:
+    'detail-img detail-img detail-name detail-cart'
+    'detail-img detail-img detail-desc .';
+}
+
+.detail-back-button {
+  margin-top: 20px;
+  width: 100px;
+  height: 35px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid #2e4057;
+}
+
+.detail-back-button:hover {
+  cursor: pointer;
+}
+
+.detail-name {
+  grid-area: detail-name;
+}
+
+.detail-name h3 {
+  font-size: 1.8rem;
+}
+
+.detail-cart {
+  grid-area: detail-cart;
+}
+
+.detail-desc {
+  grid-area: detail-desc;
+}
+
+.detail-img {
+  grid-area: detail-img;
+  /* overflow: hidden; */
+}
+
+.detail-img img {
+  width: 100%;
+  border-radius: 5px;
+}

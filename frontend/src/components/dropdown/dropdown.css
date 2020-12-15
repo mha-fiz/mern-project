@@ -1,0 +1,15 @@
+.dropdown-container {
+  position: absolute;
+  height: 200px;
+  width: 130px;
+  background-color: antiquewhite;
+  top: 60px;
+  right: 320px;
+  border-radius: 5px;
+}
+
+@media (max-width: 500px) {
+  .dropdown-container {
+    top: 110px;
+  }
+}
