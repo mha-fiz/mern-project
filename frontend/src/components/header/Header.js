@@ -11,7 +11,7 @@ const Header = () => {
       <div className="header-container">
         <div className="header-brand">
           <Link to="/">
-            <h2>M&H</h2>
+            <h2>shoplab</h2>
           </Link>
         </div>
         <nav className="nav-links">

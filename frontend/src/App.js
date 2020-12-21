@@ -17,7 +17,7 @@ function App() {
         }}
       >
         <Route path="/" component={HomePage} exact />
-        <Route path="/products/:id" component={ProductDetails} />
+        <Route path="/products/:category/:id" component={ProductDetails} />
       </main>
       <Footer />
     </>

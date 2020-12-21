@@ -50,7 +50,7 @@
 
 @media (max-width: 768px) {
   .card {
-    height: 320px;
+    height: 350px;
     width: 210px;
     justify-self: center;
   }
@@ -58,6 +58,10 @@
   .card-desc h4,
   p {
     line-height: 1;
+  }
+
+  .card-desc h4 {
+    max-width: 190px;
   }
 
   .card-desc {
@@ -68,6 +72,6 @@
 @media (max-width: 500px) {
   .card {
     height: 400px;
-    width: 300px;
+    width: 270px;
   }
 }

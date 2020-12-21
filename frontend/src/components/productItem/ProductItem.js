@@ -6,12 +6,12 @@ import './productItem.css';
 const ProductItem = ({ product }) => {
   return (
     <div className="card">
-      <Link to={`/products/${product._id}`}>
+      <Link to={`/products/${product.category}/${product._id}`}>
         <img src={product.image} alt={product.name} />
       </Link>
       <div className="card-desc">
         <div>
-          <Link to={`/products/${product._id}`}>
+          <Link to={`/products/${product.category}/${product._id}`}>
             <h4>{product.name}</h4>
           </Link>
         </div>

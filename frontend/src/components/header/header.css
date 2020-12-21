@@ -1,5 +1,5 @@
 .header {
-  background-color: #2e4057;
+  background-color: #151d28;
   border-bottom: 3px solid rgba(0, 0, 0, 0.637);
   color: #fff;
 }
@@ -20,6 +20,11 @@
 
 .header-brand {
   margin-left: 10px;
+}
+
+.header-brand h2 {
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
 .nav-links ul {
@@ -58,7 +63,7 @@
 
 @media (max-width: 500px) {
   .header {
-    height: 130px;
+    height: 150px;
   }
   .header-container {
     flex-direction: column;
