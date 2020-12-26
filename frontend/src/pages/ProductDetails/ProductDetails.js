@@ -10,10 +10,10 @@ const ProductDetails = ({ history, match: { params } }) => {
   const productDetails = useSelector((state) => state.productDetails);
   const dispatch = useDispatch();
   const { isLoading, errorMessage, product } = productDetails;
-  const [productQty, setProductQty] = useState(0);
+  const [productQty, setProductQty] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchProductDetails(params.category, params.id));
+    dispatch(fetchProductDetails(params.id));
   }, [dispatch, params]);
 
   const addToCart = () => {

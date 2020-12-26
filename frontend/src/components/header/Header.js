@@ -1,10 +1,13 @@
-import React from 'react';
-import './header.css';
-import { Link } from 'react-router-dom';
-// import Dropdown from '../dropdown/Dropdown';
+import React from "react";
+import "./header.css";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../../actions/userActions";
 
 const Header = () => {
-  // const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const dispatch = useDispatch();
 
   return (
     <header className="header">
@@ -21,11 +24,29 @@ const Header = () => {
                 <i className="fas fa-shopping-basket"></i>Cart
               </Link>
             </li>
-            <li>
-              <Link to="/signin">
-                <i className="far fa-user"></i>Sign In
+            {userInfo ? (
+              <>
+                <li>
+                  <Link to="/profile">
+                    <i className="far fa-user"></i>
+                    {userInfo.name}
+                  </Link>
+                </li>
+                <li>
+                  <div onClick={() => dispatch(logoutUser())}>
+                    <i className="fas fa-sign-out-alt"></i>
+                    Logout
+                  </div>
+                </li>
+              </>
+            ) : (
+              <Link to="/login">
+                <li>
+                  <i className="far fa-user"></i>Sign In
+                </li>
               </Link>
-            </li>
+            )}
+
             {/* <li>
               <form onSubmit={(e) => e.preventDefault()}>
                 <input
@@ -40,7 +61,6 @@ const Header = () => {
             </li> */}
           </ul>
         </nav>
-        {/* <Dropdown showDropdown={isDropdownOpen} /> */}
       </div>
     </header>
   );

@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Rating from '../rating/Rating';
-import './productItem.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import Rating from "../rating/Rating";
+import "./productItem.css";
 
 const ProductItem = ({ product }) => {
   return (
     <div className="card">
-      <Link to={`/products/${product.category}/${product._id}`}>
+      <Link to={`/products/${product._id}`}>
         <img src={product.image} alt={product.name} />
       </Link>
       <div className="card-desc">
@@ -20,7 +20,7 @@ const ProductItem = ({ product }) => {
           <Rating
             value={product.rating}
             text={`(${product.numReviews})`}
-            color={'#f8e825'}
+            color={"#f8e825"}
           />
         </div>
       </div>

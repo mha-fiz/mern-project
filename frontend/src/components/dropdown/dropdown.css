@@ -1,11 +1,17 @@
 .dropdown-container {
   position: absolute;
-  height: 200px;
+  height: 65px;
+  padding: 10px 10px;
   width: 130px;
-  background-color: antiquewhite;
+  background-color: rgb(3, 14, 37);
   top: 60px;
-  right: 320px;
-  border-radius: 5px;
+  right: 10px;
+  border-radius: 7px;
+}
+
+.dropdown-profile,
+.dropdown-logout:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {

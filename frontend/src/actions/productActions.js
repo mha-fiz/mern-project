@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   FETCH_PRODUCTS_FAIL,
   FETCH_PRODUCTS_START,
@@ -6,13 +6,13 @@ import {
   FETCH_DETAILS_START,
   FETCH_DETAILS_SUCCESS,
   FETCH_DETAILS_FAIL,
-} from '../constant/productConstant';
+} from "../constant/productConstant";
 
 export const fetchProductList = () => async (dispatch) => {
   try {
     dispatch({ type: FETCH_PRODUCTS_START });
 
-    const response = await axios.get('/api/products');
+    const response = await axios.get("/api/products");
 
     dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: response.data });
   } catch (error) {
@@ -25,11 +25,11 @@ export const fetchProductList = () => async (dispatch) => {
     });
   }
 };
-export const fetchProductDetails = (category, id) => async (dispatch) => {
+export const fetchProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: FETCH_DETAILS_START });
 
-    const response = await axios.get(`/api/products/${category}/${id}`);
+    const response = await axios.get(`/api/products/${id}`);
 
     dispatch({ type: FETCH_DETAILS_SUCCESS, payload: response.data });
   } catch (error) {

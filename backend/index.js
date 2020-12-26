@@ -1,20 +1,23 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import chalk from 'chalk';
-import connectToDatabase from './config/db.js';
-import productRoutes from './routes/productRoutes.js';
-import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import express from "express";
+import dotenv from "dotenv";
+import chalk from "chalk";
+import connectToDatabase from "./config/db.js";
+import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
 connectToDatabase();
 
 const app = express();
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('api running');
+app.get("/", (req, res) => {
+  res.send("api running");
 });
 
-app.use('/api/products', productRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
