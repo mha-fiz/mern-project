@@ -10,18 +10,45 @@ import {
   userProfileReducer,
   userUpdateReducer,
 } from "./reducers/userReducers";
+import { createOrderReducer } from "./reducers/orderReducers";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { encryptTransform } from "redux-persist-transform-encrypt";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["userLogin"],
+  transforms: [
+    encryptTransform({
+      secretKey: "shoplabUserInfo",
+      onError: function (error) {
+        console.error(error);
+      },
+    }),
+  ],
+};
 
 const getCartItemFromLocalStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
-const getUserInfoFromLocalStorage = localStorage.getItem("userInfo")
-  ? JSON.parse(localStorage.getItem("userInfo"))
-  : null;
+// const getUserInfoFromLocalStorage = localStorage.getItem("userInfo")
+//   ? JSON.parse(localStorage.getItem("userInfo"))
+//   : null;
+
+const getShippingAddressFromLocalStorage = localStorage.getItem(
+  "shippingAddress"
+)
+  ? JSON.parse(localStorage.getItem("shippingAddress"))
+  : {};
 
 const initialState = {
-  cart: { cartItems: getCartItemFromLocalStorage },
-  userLogin: { userInfo: getUserInfoFromLocalStorage },
+  cart: {
+    cartItems: getCartItemFromLocalStorage,
+    shippingAddress: getShippingAddressFromLocalStorage,
+  },
+  // userLogin: { userInfo: getUserInfoFromLocalStorage },
 };
 
 const reducers = combineReducers({
@@ -32,14 +59,19 @@ const reducers = combineReducers({
   userRegister: userRegisterReducer,
   userProfile: userProfileReducer,
   userUpdate: userUpdateReducer,
+  orderCreate: createOrderReducer,
 });
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 const middleware = [thunk];
 
 const store = createStore(
-  reducers,
+  persistedReducer,
   initialState,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
-export default store;
+const persistor = persistStore(store);
+
+export { store, persistor };

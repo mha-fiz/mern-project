@@ -29,7 +29,7 @@ const Header = () => {
                 <li>
                   <Link to="/profile">
                     <i className="far fa-user"></i>
-                    {userInfo.name}
+                    Profile
                   </Link>
                 </li>
                 <li>

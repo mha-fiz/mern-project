@@ -15,12 +15,16 @@ export const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({ name, email, password });
 
   if (user) {
+    const token = createToken(user._id);
+
+    res.cookie("token", token, { httpOnly: true });
+
     res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      token: createToken(user._id),
+      token,
     });
   } else {
     res.status(400);
@@ -34,12 +38,16 @@ export const loginUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await user.comparePassword(password))) {
+    const token = createToken(user._id);
+
+    res.cookie("token", token, { httpOnly: true });
+
     res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      token: createToken(user._id),
+      token,
     });
   } else {
     res.status(401);

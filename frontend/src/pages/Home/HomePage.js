@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import ProductItem from '../../components/productItem/ProductItem';
-import './HomePage.css';
-import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../../components/spinner/Spinner';
-import { fetchProductList } from '../../actions/productActions';
+import React, { useEffect } from "react";
+import ProductItem from "../../components/productItem/ProductItem";
+import "./HomePage.css";
+import { useDispatch, useSelector } from "react-redux";
+import Spinner from "../../components/spinner/Spinner";
+import { fetchProductList } from "../../actions/productActions";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const HomePage = () => {
         <h3>{errorMessage}</h3>
       ) : (
         <>
-          <h1 style={{ marginLeft: '10px' }}>Latest Products</h1>
+          <h1 style={{ marginLeft: "10px" }}>Featured Products</h1>
           <div className="cards-container">
             {products.map((product) => {
               return <ProductItem product={product} key={product._id} />;

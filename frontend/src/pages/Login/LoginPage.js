@@ -10,7 +10,7 @@ const LoginPage = ({ location, history }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { isLoading, errorMessage, userInfo } = userLogin;
-  // const redirect = location.search ? location.search.split("=")[1] : "/";
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,9 +19,9 @@ const LoginPage = ({ location, history }) => {
 
   useEffect(() => {
     if (userInfo) {
-      history.push("/");
+      history.push(redirect);
     }
-  }, [history, userInfo]);
+  }, [history, userInfo, redirect]);
 
   return (
     <div>
@@ -44,7 +44,10 @@ const LoginPage = ({ location, history }) => {
         <button type="submit">Sign In</button>
       </form>
       <p>
-        Dont have an account? Create <Link to="/register">here</Link>
+        Dont have an account? Create{" "}
+        <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
+          here
+        </Link>
       </p>
     </div>
   );

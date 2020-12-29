@@ -19,7 +19,7 @@ const ProductItem = ({ product }) => {
           <p className="price">${product.price}</p>
           <Rating
             value={product.rating}
-            text={`(${product.numReviews})`}
+            text={`(${product.numReviews}) reviews`}
             color={"#f8e825"}
           />
         </div>

@@ -6,6 +6,9 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import LoginPage from "./pages/Login/LoginPage";
 import RegisterPage from "./pages/Register/RegisterPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
+import ShippingPage from "./pages/Shipping/ShippingPage";
+import PaymentPage from "./pages/Payment/PaymentPage";
+import OrderOverview from "./pages/OrderOverview/OrderOverview";
 import { Route } from "react-router-dom";
 
 function App() {
@@ -25,6 +28,9 @@ function App() {
         <Route path="/register" component={RegisterPage} exact />
         <Route path="/products/:id" component={ProductDetails} />
         <Route path="/cart/:id?" exact component={CartPage} />
+        <Route path="/shipping" exact component={ShippingPage} />
+        <Route path="/payment" exact component={PaymentPage} />
+        <Route path="/orderoverview" exact component={OrderOverview} />
       </main>
       <Footer />
     </>
