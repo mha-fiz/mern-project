@@ -4,6 +4,7 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGOUT,
   USER_PROFILE_FAIL,
+  USER_PROFILE_LOGOUT,
   USER_PROFILE_START,
   USER_PROFILE_SUCCESS,
   USER_REGISTER_FAIL,
@@ -83,6 +84,8 @@ export const userProfileReducer = (state = { user: {} }, action) => {
         errorMessage: action.payload,
         isLoading: false,
       };
+    case USER_PROFILE_LOGOUT:
+      return { user: {} };
     default:
       return state;
   }

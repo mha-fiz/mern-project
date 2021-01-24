@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile, updateUserProfile } from "../../actions/userActions";
+import { listMyOrders } from "../../actions/orderActions";
 import Spinner from "../../components/spinner/Spinner";
 
 const ProfilePage = ({ location, history }) => {
@@ -18,6 +19,7 @@ const ProfilePage = ({ location, history }) => {
   const { userInfo } = userLogin;
   const userUpdate = useSelector((state) => state.userUpdate);
   const { success } = userUpdate;
+  const myOrderList = useSelector((state) => state.myOrderList);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +36,7 @@ const ProfilePage = ({ location, history }) => {
     } else {
       if (!user.name) {
         dispatch(getUserProfile("profile"));
+        dispatch(listMyOrders());
       } else {
         setName(user.name);
         setEmail(user.email);
@@ -75,6 +78,23 @@ const ProfilePage = ({ location, history }) => {
 
         <button type="submit">Update Profile</button>
       </form>
+      <div className="my-order-list">
+        {myOrderList.isLoading ? (
+          <Spinner />
+        ) : myOrderList.errorMessage ? (
+          <h2 style={{ color: "red" }}>{errorMessage}</h2>
+        ) : (
+          myOrderList.orders.map((order) => (
+            <div className="order-list-item" key={order._id}>
+              <p>{order._id}</p>
+              <p>{order.createdAt}</p>
+              <p>{order.totalPrice}</p>
+              <p>{order.isPaid ? "Paid" : "Not Paid"}</p>
+              <p>{order.isDelivered ? "Delivered" : "Not delivered"}</p>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 };

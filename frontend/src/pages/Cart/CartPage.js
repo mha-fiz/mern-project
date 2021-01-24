@@ -34,7 +34,7 @@ const CartPage = ({ history, location, match: { params } }) => {
       ) : (
         <>
           {cartItems.map((item) => (
-            <div className="cart-items" key={item.id}>
+            <div className="cart-items" key={item.product}>
               <img
                 style={{ width: "200px", height: "200px" }}
                 src={item.image}
@@ -46,7 +46,7 @@ const CartPage = ({ history, location, match: { params } }) => {
                 value={item.qty}
                 style={{ marginLeft: "10px" }}
                 onChange={(e) =>
-                  dispatch(addItemToCart(item.id, Number(e.target.value)))
+                  dispatch(addItemToCart(item.product, Number(e.target.value)))
                 }
               >
                 {[...Array(item.countInStock).keys()].map((num) => (

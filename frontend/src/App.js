@@ -9,6 +9,7 @@ import ProfilePage from "./pages/Profile/ProfilePage";
 import ShippingPage from "./pages/Shipping/ShippingPage";
 import PaymentPage from "./pages/Payment/PaymentPage";
 import OrderOverview from "./pages/OrderOverview/OrderOverview";
+import OrderDetails from "./pages/OrderDetails/OrderDetails";
 import { Route } from "react-router-dom";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/shipping" exact component={ShippingPage} />
         <Route path="/payment" exact component={PaymentPage} />
         <Route path="/orderoverview" exact component={OrderOverview} />
+        <Route path="/orders/:id" exact component={OrderDetails} />
       </main>
       <Footer />
     </>

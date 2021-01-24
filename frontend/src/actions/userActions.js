@@ -1,4 +1,5 @@
 import axios from "axios";
+import { MY_ORDER_LIST_LOGOUT } from "../constant/orderConstant";
 import {
   USER_LOGIN_START,
   USER_LOGIN_SUCCESS,
@@ -13,6 +14,7 @@ import {
   USER_UPDATE_PROFILE_START,
   USER_UPDATE_PROFILE_SUCCESS,
   USER_UPDATE_PROFILE_FAIL,
+  USER_PROFILE_LOGOUT,
 } from "../constant/userConstant";
 
 export const loginUser = (email, password) => async (dispatch) => {
@@ -150,7 +152,9 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
   }
 };
 
-export const logoutUser = () => async (disptach) => {
-  disptach({ type: USER_LOGOUT });
+export const logoutUser = () => async (dispatch) => {
+  dispatch({ type: USER_LOGOUT });
+  dispatch({ type: USER_PROFILE_LOGOUT });
+  dispatch({ type: MY_ORDER_LIST_LOGOUT });
   localStorage.removeItem("userInfo");
 };

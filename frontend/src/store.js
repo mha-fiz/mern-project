@@ -10,7 +10,12 @@ import {
   userProfileReducer,
   userUpdateReducer,
 } from "./reducers/userReducers";
-import { createOrderReducer } from "./reducers/orderReducers";
+import {
+  createOrderReducer,
+  orderDetailsReducer,
+  orderPayReducers,
+  myOrderListReducers,
+} from "./reducers/orderReducers";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
@@ -60,6 +65,9 @@ const reducers = combineReducers({
   userProfile: userProfileReducer,
   userUpdate: userUpdateReducer,
   orderCreate: createOrderReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducers,
+  myOrderList: myOrderListReducers,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
